@@ -2,7 +2,6 @@ const { WebClient } = require("@slack/web-api");
 const token = process.env.SLACK_TOKEN;
 
 module.exports = (job, settings, action, type) => {
-  console.log(job);
   
   const slackWeb = new WebClient(token);
   const icon_emoji = type === "prerender" ? ":robot_face:" : ":white_check_mark:";
@@ -13,7 +12,7 @@ module.exports = (job, settings, action, type) => {
       .postMessage({
         channel: action.conversationId,
         username: "Render Bot",
-        text: "New alert",
+        text: "New alert", // or if you want to use it dynamically with action.text 
         icon_emoji: icon_emoji,
         attachments: attachments,
       })
