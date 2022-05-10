@@ -4,15 +4,15 @@ const token = process.env.SLACK_TOKEN;
 module.exports = (job, settings, action, type) => {
   
   const slackWeb = new WebClient(token);
-  const icon_emoji = type === "prerender" ? ":robot_face:" : ":white_check_mark:";
+  const icon_emoji = type === 'prerender' ? ':robot_face:' : ':white_check_mark:';
   const attachments = getAttachments(job, type);
 
   return new Promise((resolve, reject) => {
     slackWeb.chat
       .postMessage({
         channel: action.conversationId,
-        username: "Render Bot",
-        text: "New alert", // or if you want to use it dynamically with action.text 
+        username: 'Render Bot',
+        text: 'New alert', // or if you want to use it dynamically with action.text 
         icon_emoji: icon_emoji,
         attachments: attachments,
       })
@@ -32,51 +32,51 @@ module.exports = (job, settings, action, type) => {
 
 // Here you can edit the attachment send to slack as message
 function getAttachments(job, type) {
-  if (type === "prerender") {
+  if (type === 'prerender') {
     return [
       {
         blocks: [
           {
-            type: "header",
+            type: 'header',
             text: {
-              type: "plain_text",
-              text: "Render start 🚀",
+              type: 'plain_text',
+              text: 'Render start 🚀',
               emoji: true,
             },
           },
           {
-            type: "divider",
+            type: 'divider',
           },
           {
-            type: "section",
+            type: 'section',
             text: {
-              type: "plain_text",
-              text: "Job Details:",
+              type: 'plain_text',
+              text: 'Job Details:',
               emoji: true,
             },
           },
           {
-            type: "section",
+            type: 'section',
             fields: [
               {
-                type: "mrkdwn",
+                type: 'mrkdwn',
                 text: `*Job uid:*\n ${job.uid}`,
               },
               {
-                type: "mrkdwn",
+                type: 'mrkdwn',
                 text: `*Composition:*\n ${job.template.composition}`,
               },
             ],
           },
           {
-            type: "section",
+            type: 'section',
             fields: [
               {
-                type: "mrkdwn",
+                type: 'mrkdwn',
                 text: `*Template src:*\n ${job.template.src}`,
               },
               {
-                type: "mrkdwn",
+                type: 'mrkdwn',
                 text: `*Output:*\n ${job.output}`,
               },
             ],
@@ -89,33 +89,33 @@ function getAttachments(job, type) {
       {
         blocks: [
           {
-            type: "header",
+            type: 'header',
             text: {
-              type: "plain_text",
-              text: "Render Finished ✅",
+              type: 'plain_text',
+              text: 'Render Finished ✅',
               emoji: true,
             },
           },
           {
-            type: "divider",
+            type: 'divider',
           },
           {
-            type: "section",
+            type: 'section',
             text: {
-              type: "plain_text",
-              text: "Job Details:",
+              type: 'plain_text',
+              text: 'Job Details:',
               emoji: true,
             },
           },
           {
-            type: "section",
+            type: 'section',
             fields: [
               {
-                type: "mrkdwn",
+                type: 'mrkdwn',
                 text: `*Job uid:*\n ${job.uid}`,
               },
               {
-                type: "mrkdwn",
+                type: 'mrkdwn',
                 text: `*Output:*\n ${job.output}`,
               },
             ],
