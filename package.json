@@ -1,0 +1,14 @@
+{
+  "name": "nexrender-action-slack-alert",
+  "version": "1.0.0",
+  "description": "Send slack alert when render start/finish or render error.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "oksr",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/web-api": "^6.7.1"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "template": {
+    "src": "file:///C:/Users/Administrator/Desktop/test.aep",
+    "composition": "main"
+  },
+  "actions": {
+    "prerender": [
+      {
+        "module": "C:/Users/Administrator/Desktop/nexrender-action-slack-alert/index.js",
+        "conversationId": "C011UTKEV1N",
+        "text": "optional text"
+      }
+    ],
+    "postrender": [
+      {
+        "module": "@nexrender/action-encode",
+        "preset": "mp4",
+        "output": "encoded.mp4"
+      },
+      {
+        "module": "@nexrender/action-copy",
+        "input": "encoded.mp4",
+        "output": "C:/Users/Administrator/Desktop/myresult.mp4"
+      },
+      {
+        "module": "C:/Users/Administrator/Desktop/nexrender-action-slack-alert/index.js",
+        "conversationId": "C011UTKEV1N",
+        "text": "optional text"
+      }
+    ]
+  }
+}
